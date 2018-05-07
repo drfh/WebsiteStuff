@@ -7,18 +7,19 @@
 // (138, 43, 226)
 // (230, 230, 250) // background
 
-//var	drops = [];
+
 var		balls = [];
 var		bob = true;
+var		numberBalls=20;
 
 function setup()
 {
-	createCanvas(800, 640);
-	for (var i = 0; i < 500; i++)
+	createCanvas(1280, 800);
+	for (var i = 0; i < numberBalls; i++)
 	{
 		balls[i] = new Ball();
 	}
-	frameRate(2);
+//	frameRate(20);
 	background(230, 230, 250);
 
 	bob_checkbox = createCheckbox('Bob', bob);
