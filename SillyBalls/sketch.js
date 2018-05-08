@@ -1,29 +1,28 @@
-// Daniel Shiffman
-// http://codingtra.in
-// http://patreon.com/codingtrain
-// Code for: https://youtu.be/KkyIDI6rQJI
-
-// Purple Rain
-// (138, 43, 226)
-// (230, 230, 250) // background
+// Author: David Harris
+// Silly Balls
 
 
 var		balls = [];
 var		bob = true;
+var		speed_limit=false;
 var		numberBalls=20;
 
 function setup()
 {
-	createCanvas(1280, 800);
+	createCanvas(windowWidth, windowHeight);
 	for (var i = 0; i < numberBalls; i++)
 	{
 		balls[i] = new Ball();
 	}
-//	frameRate(20);
+
+	frameRate(1);
 	background(230, 230, 250);
 
 	bob_checkbox = createCheckbox('Bob', bob);
 	bob_checkbox.changed(myCheckedEvent);
+
+	speedlimit_checkbox = createCheckbox('Speed Limit', bob);
+	speedlimit_checkbox.changed(speedlimit_CheckedEvent);
 
 //	rSlider = createSlider(0, 255, 100);
 //	rSlider.position(20, 20);
@@ -33,6 +32,10 @@ function setup()
 //	bSlider.position(20, 80);
 }
 
+function windowResized()
+{
+	resizeCanvas(windowWidth, windowHeight);
+}
 
 function draw()
 {
@@ -50,12 +53,20 @@ function draw()
 	}
 }
 
-
 function myCheckedEvent()
 {
 	if (this.checked()) {
 		bob=true;
 	} else {
 		bob=false;
+	}
+}
+
+function speedlimit_CheckedEvent()
+{
+	if (this.checked()) {
+		frameRate(20);
+	} else {
+		frameRate(-1);
 	}
 }
